@@ -1,0 +1,33 @@
+@import "tailwindcss";
+ 
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+.noise-overlay {
+  pointer-events: none; /* Ensures it doesn't block interactions */
+  background-image: 
+    radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 10%),
+    radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+  background-size: 3px 3px, 2px 2px; /* Adjust for more/less grain */
+  opacity: 1; /* Adjust transparency */
+}
