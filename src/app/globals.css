@@ -16,13 +16,6 @@
   }
 }
 
-
-
-
-
-
-
-
 .noise-overlay {
   pointer-events: none; /* Ensures it doesn't block interactions */
   background-image: 

@@ -21,12 +21,23 @@ function Nav({ className }: { className?: string }) {
       className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
     >
       <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Services">
+        <MenuItem
+          setActive={setActive}
+          active={active}
+          href="/services"
+          item="Services"
+        >
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
+            <HoveredLink href="/services/web-development">
+              Web Development
+            </HoveredLink>
+            <HoveredLink href="services/interface-design">
+              Interface Design
+            </HoveredLink>
+            <HoveredLink href="services/seo">
+              Search Engine Optimization
+            </HoveredLink>
+            <HoveredLink href="services/branding">Branding</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Products">

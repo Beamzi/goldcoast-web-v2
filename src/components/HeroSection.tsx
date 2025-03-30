@@ -1,17 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, Spring } from "motion/react";
 import { AuroraBackground } from "./ui/aurora-background";
+import { StickyScroll } from "./ui/sticky-scroll-reveal";
+import { homePage } from "@/content/home/home";
 
-export default function HeroSectionOne() {
+export default function HeroSectionOne({
+  stickyScrollContentPass,
+  heroSectionContent,
+}: {
+  heroSectionContent: {
+    heading: string;
+    paragraph: string;
+  };
+  //just passing
+  stickyScrollContentPass: any[];
+}) {
   return (
     <div className="relative mx-auto flex max-w-12/12 flex-col items-center justify-center">
-      <div className="noise-overlay z-1 absolute w-full h-full"></div>
+      <div className="noise-overlay z-1 abslute w-full h-full"></div>
       <AuroraBackground className="absolute left-0 right-0">
         <p></p>
       </AuroraBackground>
-
       <div className="relative z-2">
         <Navbar />
         <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
@@ -25,23 +36,21 @@ export default function HeroSectionOne() {
         </div>
         <div className="px-4 py-10 md:py-20">
           <h1 className="relative z-10 mx-auto max-w-7x2 text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-            {"Launch your website in hours, not days"
-              .split(" ")
-              .map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                  animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: index * 0.1,
-                    ease: "easeInOut",
-                  }}
-                  className="mr-2 inline-block"
-                >
-                  {word}
-                </motion.span>
-              ))}
+            {`${heroSectionContent.heading}`.split(" ").map((word, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1,
+                  ease: "easeInOut",
+                }}
+                className="mr-2 inline-block"
+              >
+                {word}
+              </motion.span>
+            ))}
           </h1>
           <motion.p
             initial={{
@@ -56,9 +65,7 @@ export default function HeroSectionOne() {
             }}
             className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
           >
-            With AI, you can launch your website in hours, not days. Try our
-            best in class, state of the art, cutting edge AI tools to get your
-            website up.
+            {heroSectionContent.paragraph}
           </motion.p>
           <motion.div
             initial={{
@@ -80,31 +87,39 @@ export default function HeroSectionOne() {
               Contact Support
             </button>
           </motion.div>
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.3,
-              delay: 1.2,
-            }}
-            className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
-          >
-            <div className="relative w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-              <Image
+          <div className="flex justify-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.3,
+                delay: 1.2,
+              }}
+              className="relative w-70 sm:w-full z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
+            >
+              <div className="relative w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
+                <div className=" w-full py-4">
+                  <StickyScroll
+                    stickyScrollContent={stickyScrollContentPass}
+                  ></StickyScroll>
+                </div>
+
+                {/* <Image
                 src="/images/1231231.png"
                 alt="Landing page preview"
                 className="aspect-[16/9] h-auto w-full object-cover"
                 height={1000}
                 width={1000}
-              />
-            </div>
-          </motion.div>
+              /> */}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
