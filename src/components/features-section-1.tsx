@@ -59,7 +59,7 @@ export default function FeatureSectionGrid() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10  md:px-20 md:py-15 mx-auto bg-neutral-900 ">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -81,9 +81,9 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-700 dark:bg-neutral-900 bg-neutral-200",
+        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-700",
+        index < 4 && "lg:border-b dark:border-neutral-700"
       )}
     >
       {index < 4 && (

@@ -1,8 +1,7 @@
 export const homeContent = {
   heroSection: {
-    heading: "Launch your website in hours, not days",
-    paragraph:
-      "With AI, you can launch your website in hours, not days. Try our best in class, state of the art, cutting edge AI tools to get your website up.",
+    heading: "The Web Was Meant to Be Better.",
+    paragraph: "Clean code, clear design, and websites that do their job—well.",
   },
   stickyScrollContent: [
     {
