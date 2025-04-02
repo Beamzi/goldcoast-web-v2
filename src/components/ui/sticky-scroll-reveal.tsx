@@ -4,12 +4,14 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { nav } from "framer-motion/client";
 
 /*     content?: React.ReactNode | any;
  */
 export const StickyScroll = ({
   stickyScrollContent,
   contentClassName,
+  navSpacer,
 }: {
   stickyScrollContent: {
     title: string;
@@ -22,6 +24,7 @@ export const StickyScroll = ({
     imgUrl?: string;
   }[];
   contentClassName?: string;
+  navSpacer?: any;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
   const ref = useRef<any>(null);
@@ -71,66 +74,71 @@ export const StickyScroll = ({
   }, [activeCard]);
 
   return (
-    <motion.div
-      animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-      }}
-      className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
-      ref={ref}
-    >
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
-          {stickyScrollContent.map((item, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-slate-100"
-              >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg mt-10 max-w-sm text-slate-300"
-              >
-                {item.description}
-              </motion.p>
-            </div>
-          ))}
-          <div className="h-40" />
-        </div>
-      </div>
-      <div
-        style={{ background: backgroundGradient }}
-        className={cn(
-          "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
-          contentClassName
-        )}
+    <div>
+      {navSpacer ? navSpacer : null}
+
+      <motion.div
+        animate={{
+          backgroundColor:
+            backgroundColors[activeCard % backgroundColors.length],
+        }}
+        className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
+        ref={ref}
       >
-        <div className="flex h-full w-full items-center justify-center text-white">
-          {stickyScrollContent[activeCard]?.media ? (
-            <Image
-              src={`${stickyScrollContent[activeCard]?.media.imgUrl}`}
-              width={300}
-              height={300}
-              className="h-full w-full object-cover"
-              alt={`${stickyScrollContent[activeCard]?.media.alt}`}
-            />
-          ) : (
-            stickyScrollContent[activeCard].caption
-          )}
+        <div className="div relative flex items-start px-4">
+          <div className="max-w-2xl">
+            {stickyScrollContent.map((item, index) => (
+              <div key={item.title + index} className="my-20">
+                <motion.h2
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-2xl font-bold text-slate-100"
+                >
+                  {item.title}
+                </motion.h2>
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-kg mt-10 max-w-sm text-slate-300"
+                >
+                  {item.description}
+                </motion.p>
+              </div>
+            ))}
+            <div className="h-40" />
+          </div>
         </div>
-      </div>
-    </motion.div>
+        <div
+          style={{ background: backgroundGradient }}
+          className={cn(
+            "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
+            contentClassName
+          )}
+        >
+          <div className="flex h-full w-full items-center justify-center text-white">
+            {stickyScrollContent[activeCard]?.media ? (
+              <Image
+                src={`${stickyScrollContent[activeCard]?.media.imgUrl}`}
+                width={300}
+                height={300}
+                className="h-full w-full object-cover"
+                alt={`${stickyScrollContent[activeCard]?.media.alt}`}
+              />
+            ) : (
+              stickyScrollContent[activeCard].caption
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 };
 

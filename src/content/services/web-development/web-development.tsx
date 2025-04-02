@@ -1,7 +1,7 @@
 export const webDevelopmentContent = {
   stickyScrollContent: [
     {
-      title: "Modern, Blazing-Fast Web Apps",
+      title: "Modern, Blazing-Fast Web",
       description:
         "Built with Next.js, React & TypeScript - We craft high-performance web applications with Next.js for SEO-friendly SSR, React for dynamic UIs, and TypeScript for bulletproof code. Perfect for startups and enterprises needing speed, scalability, and maintainability.",
 

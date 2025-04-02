@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/Footer";
 
+const spacerDiv = <div className="h-22"></div>;
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +34,7 @@ export default function RootLayout({
         <main>
           <Navbar></Navbar>
           {children}
+
           <Footer></Footer>
         </main>
       </body>
